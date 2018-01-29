@@ -195,18 +195,22 @@ print("Hoaquin\n")
 #0.0.1 feature: This is the primary loop that allows the program to perform main method repeatedly.
 while True:
   #determines if user wants to make a new character. If not yes, loop and program is ended. 
-  if input("Make New character? ") == "yes":
+  if input("Make New character? ") == "yes" or "Yes" or "y" or "Y":
   
   
-  #gets the information from the user, and creates an object in the regular data class with information given
-    name = input("Input your character's name: ")
-    
-    core_position = input("Input your character's core position: ")  # WARNING, MUST ENTER NAME EXACTLY FIRST LETTER CAPS AND SPACE.
-    
-    current_floor = int(input("Current Floor?"))
-    
-    tier = int(input("Tier in Primary Tier"))
-    
+  #gets the information from the user, and creates an object in the regular data class with information given. If invalid input is given, program restarts
+    try:
+      name = input("Input your character's name: ")
+      
+      core_position = input("Input your character's core position: ")  # WARNING, MUST ENTER NAME EXACTLY FIRST LETTER CAPS AND SPACE.
+      
+      current_floor = int(input("Current Floor?"))
+      
+      tier = int(input("Tier in Primary Tier"))
+    except ValueError:
+      print("Error: Invalid input")
+      continue
+      
     #Error handling: If a Key Error occurs here, assumes that the core position input was not valid, and restarts the loop without a crash.
     try:
       Player_Object1 = RegularData(name, core_position, current_floor, tier)
@@ -217,16 +221,3 @@ while True:
   
   else:
     exit()
-    
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
